@@ -17,24 +17,22 @@ st.title("Client & Prospect Review")
 st.subheader("Are we targeting right professional communities?")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
-st.sidebar.header("Dashboard")
+st.sidebar.header("Advisor's Client Nexus")
 
+with st.sidebar.expander("See explanation",True):
+
+    st.write(
+
+    """
+
+        Welcome to the Wealth Advisor's Client Nexus, designed to provide an overview of your client base and potential prospects.
+
+        Targeting the right professional communities is essential for the success!!
+
+    """
+
+)
 st.sidebar.divider()
-
-#with st.sidebar.expander("See explanation",True):
-
-    #st.write(
-
-   # """
-
-   #     This intelligent feature automatically populates relevant data fields based on the document you upload.
-
-   #     Say goodbye to manual data entry and let Smart Fill do the heavy lifting for you.
-
-   # """
-
-#)
-
 
 df = pd.read_excel(io='FamilyOfficeEntityDataSampleV1.1.xlsx',
                 engine='openpyxl',
