@@ -7,7 +7,7 @@ warnings.filterwarnings('ignore')
 
 ## All Demos to be in Wide Layout
 #st.set_page_config(layout="wide")
-st.set_page_config(page_title="Client Review Dashboards", page_icon=":bar_chart:", layout="wide")
+st.set_page_config(page_title="Client Review Dashboards", page_icon=":bar_chart:",  layout="wide")
 
 #This is Famiology Branding Banner
 st.sidebar.image("FamiologyTextLogo.png", use_column_width=True)
@@ -101,6 +101,6 @@ with col1:
 profession_df =  filtered_df.groupby(by = ["Profession","State"], as_index = False)["Net Worth"].sum()
 with col2:
        st.subheader("Profession wise Net Worth review")
-       fig = px.pie(profession_df, values = "Net Worth", names = "Profession", hole=0.5) 
+       fig = px.pie(profession_df, values = "Net Worth", names = "Profession", hole=0.5, hover_data="State") 
        fig.update_traces(text = filtered_df["Profession"], textposition = "outside")  
        st.plotly_chart(fig, use_container_width=True) 
