@@ -7,7 +7,7 @@ warnings.filterwarnings('ignore')
 
 ## All Demos to be in Wide Layout
 #st.set_page_config(layout="wide")
-st.set_page_config(page_title="Client Review Dashboards", page_icon=":bar_chart:",  layout="wide")
+st.set_page_config(page_title="Advisor's Client Nexus", page_icon=":bar_chart:",  layout="wide")
 
 #This is Famiology Branding Banner
 st.sidebar.image("FamiologyTextLogo.png", use_column_width=True)
