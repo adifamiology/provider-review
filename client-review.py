@@ -7,7 +7,8 @@ warnings.filterwarnings('ignore')
 
 ## All Demos to be in Wide Layout
 #st.set_page_config(layout="wide")
-st.set_page_config(page_title="Advisor's Client Nexus", page_icon=":bar_chart:",  layout="wide")
+st.set_page_config(page_title="Advisor's Client Nexus", page_icon='favicon.ico',  layout="wide")
+#st.set_page_config(page_title='Famiology.docdetector', page_icon='/Users/atharvabapat/Desktop/Theoremlabs-project/favicon (2).ico')
 
 #This is Famiology Branding Banner
 st.sidebar.image("FamiologyTextLogo.png", use_column_width=True)
@@ -17,6 +18,7 @@ st.title("Client & Prospect Review")
 st.subheader("Are we targeting right professional communities?")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
+#st.sidebar.header("About Dashboard:")
 st.sidebar.header("Advisor's Client Nexus")
 
 with st.sidebar.expander("See explanation",True):
@@ -52,7 +54,9 @@ with col2:
         date2 = pd.to_datetime(st.date_input("End Date", endDate))
 
 df = df[(df["Date of Birth"] >= date1) & (df["Date of Birth"] <= date2)]
-
+df2 = df[(df["Date of Birth"] >= date1) & (df["Date of Birth"] <= date2)]
+df3 = df[(df["Date of Birth"] >= date1) & (df["Date of Birth"] <= date2)]
+df4 = df[(df["Date of Birth"] >= date1) & (df["Date of Birth"] <= date2)]
 st.sidebar.header("Choose your filter: ")
 
 #create for Status
@@ -86,6 +90,8 @@ elif status and profession:
        filtered_df = df4[df4["Status"].isin(status) & df4["Profession"].isin(profession)]
 elif status and state:
        filtered_df = df3[df3["Status"].isin(status) & df3["State"].isin(state)]
+elif profession:
+      filtered_df = df4[df4["Profession"].isin(profession)]
 
 status_df =  filtered_df.groupby(by = ["Status","State"], as_index = False)["Net Worth"].sum()
 
@@ -100,5 +106,5 @@ profession_df =  filtered_df.groupby(by = ["Profession","State"], as_index = Fal
 with col2:
        st.subheader("Community wise Net Worth review")
        fig = px.pie(profession_df, values = "Net Worth", names = "Profession", hole=0.5, hover_data="State") 
-       fig.update_traces(text = filtered_df["Profession"], textposition = "outside")  
+       fig.update_traces(text = profession_df["Profession"], textposition = "outside")  
        st.plotly_chart(fig, use_container_width=True) 
