@@ -56,7 +56,7 @@ df = df[(df["Date of Birth"] >= date1) & (df["Date of Birth"] <= date2)]
 st.sidebar.header("Choose your filter: ")
 
 #create for Status
-status = st.sidebar.multiselect("Pick the Status", df["Status"].unique())
+status = st.sidebar.multiselect("Pick the Client Status", df["Status"].unique())
 if not status:
        df2 = df.copy()
 else:
@@ -68,7 +68,7 @@ if not status:
 else:
       df3 = df2[df2["State"].isin(state)]
 
-profession = st.sidebar.multiselect("Pick the Profession", df3["Profession"].unique())
+profession = st.sidebar.multiselect("Pick the Community", df3["Profession"].unique())
 if not profession:
        df4 = df3.copy()
 else:
@@ -90,7 +90,7 @@ elif status and state:
 status_df =  filtered_df.groupby(by = ["Status","State"], as_index = False)["Net Worth"].sum()
 
 with col1:
-       st.subheader("Status wise Net Worth review")
+       st.subheader("Status & State wise Net Worth review")
        fig = px.bar(status_df, x = "Status", y = 'Net Worth', text='State',
                     template="seaborn")
        
@@ -98,7 +98,7 @@ with col1:
 
 profession_df =  filtered_df.groupby(by = ["Profession","State"], as_index = False)["Net Worth"].sum()
 with col2:
-       st.subheader("Profession wise Net Worth review")
+       st.subheader("Community wise Net Worth review")
        fig = px.pie(profession_df, values = "Net Worth", names = "Profession", hole=0.5, hover_data="State") 
        fig.update_traces(text = filtered_df["Profession"], textposition = "outside")  
        st.plotly_chart(fig, use_container_width=True) 
