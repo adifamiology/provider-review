@@ -19,7 +19,7 @@ st.subheader("Are we targeting right professional communities?")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 st.sidebar.header("About App")
-st.sidebar.header("Advisor's Client Nexus")
+st.sidebar.subheader("Advisor's Client Nexus")
 
 with st.sidebar.expander("See explanation",True):
 
